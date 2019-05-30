@@ -1,12 +1,9 @@
-//make fake data with a csv file and then use           https://docs.mongodb.com/manual/reference/program/mongoimport/  
-//do not paste the entire connection url into your index.js file for db, because you'll have to paste in your username and password, which is insecure
-//
-
-
-
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+// const dbpass = require('dbpass.js')
 mongoose.connect('mongodb://localhost/fetcher', {useNewUrlParser: true});
+const {dbObject} = require('../reviews');
+
 
 
 //establish database connection
@@ -17,45 +14,53 @@ db.once('open', () => {
 });
 
 //the main object
-let repoSchema = mongoose.Schema({
-  repoName: String,
-  repoUrl: String,
-  starGazers: Number
+let reviewsSchema = mongoose.Schema({
+  UUID: Number,
+  reviews: [{
+    customerName: String,
+    starRating: Number,
+    date: String, 
+    reviewTitle: String,
+    review: String, 
+    helpful: {yes: Number, no: Number}
+  }] 
 });
 
 //a constructor that creates objects that go into the main object
 
-//a function that places the inner objects into the main object
-
 //a function that generates 10 reviews per product
+//could this function run outside of my data base, and then I just seed db with a csv?
 
-let Repo = mongoose.model('Repo', repoSchema);
+let Review = mongoose.model('Review', reviewsSchema);
 
-
-  // TODO: Your code here
-  // This function should save a repo or repos to
-  // the MongoDB
-  //I believe this should be some sort of db query
-let save = (data, callback) => {
-  let myRepos = [];
-  for(let i = 0; i < data.length; i++) {
-    let newObject = {
-      repoName: data[i].name,
-      repoUrl: data[i].html_url,
-      starGazers: data[i].stargazers_count
-    }
-    myRepos.push(newObject);
-  }
-  
-  Repo.insertMany(myRepos, (err) => {
+//THIS IS NOT A WORKING FUNCTION!!!!
+const getReviewsByUuid = (uuid, callback) => {
+  Review.find({UUID: uuid}, (err, result) => {
     if(err) {
-      console.log("There was an error inserting many");
-      callback(err);
+      console.log(err);
+      throw err;
     } else {
-      console.log("It worked!  You saved something to your gosh-darn database!")
-      callback(null, "Successfully saved!")
+      console.log('Holy cow!  Your database is sending something to your server!');
+      callback(null, result);
     }
   })
-}
+};
 
-module.exports = save;
+
+//THESE ARE FOR DE-SEEDING AND RE-SEEDING DB AS NEEDED DO NOT DELETE
+
+// Review.deleteMany({}, (err) => console.log);
+
+// Review.create(dbObject, (err) => {
+//     if (err) {
+//         console.log('Error seeding Reviews Database:');
+//         console.log(err);
+//     } else {
+//         console.log('Successfully seeded Reviews Database!');
+//     }
+// }); 
+
+
+console.log(Review);
+
+module.exports = {db, getReviewsByUuid};
