@@ -13,23 +13,23 @@ const StarTotals = (props) => {
     let totalFives = 0;
 
     for(var i = 0; i < props.reviewData.length; i++) {
-      if(props.reviewData[i].starRating = 1) {
+      if(props.reviewData[i].starRating === 1) {
         totalOnes++;
       }
 
-      if(props.reviewData[i].starRating = 2) {
+      if(props.reviewData[i].starRating === 2) {
         totalTwos++;
       }
 
-      if(props.reviewData[i].starRating = 3) {
+      if(props.reviewData[i].starRating === 3) {
         totalThrees++;
       }
 
-      if(props.reviewData[i].starRating = 4) {
+      if(props.reviewData[i].starRating === 4) {
         totalFours++;
       }
 
-      if(props.reviewData[i].starRating = 5) {
+      if(props.reviewData[i].starRating === 5) {
         totalFives++;
       }
     }
@@ -74,7 +74,7 @@ const StarTotals = (props) => {
       );
   };
 
-  const allStarTotals = getStarTotals(props); 
+  let allStarTotals = getStarTotals(props); 
   
 
 
@@ -86,13 +86,3 @@ const StarTotals = (props) => {
 }
 
 export default StarTotals;
-
-
-/*
-You'll need to put this into the mapped reviews once you figure out how you're going to do the stars
-        <span class="star-icon pull-left">::before</span>
-        <span class="star-icon pull-left">::before</span>
-        <span class="star-icon pull-left">::before</span>
-        <span class="star-icon pull-left">::before</span>
-        <span class="star-icon pull-left">::before</span>
-*/

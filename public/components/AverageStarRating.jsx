@@ -88,7 +88,7 @@ const AverageStarRating = (props) => {
     }
   };
 
-  const averageRating = findAverageRating(props); 
+  let averageRating = findAverageRating(props); 
   
 
 

@@ -85,13 +85,3 @@ const StarRating = (props) => {
 }
 
 export default StarRating;
-
-
-/*
-You'll need to put this into the mapped reviews once you figure out how you're going to do the stars
-        <span class="star-icon pull-left">::before</span>
-        <span class="star-icon pull-left">::before</span>
-        <span class="star-icon pull-left">::before</span>
-        <span class="star-icon pull-left">::before</span>
-        <span class="star-icon pull-left">::before</span>
-*/
