@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      uuid: 18, //talk to hunter about how this works
+      uuid: 59, //talk to hunter about how this works
       reviews: [], //find a way to get currentUuid's reviews into state
     }
   }
@@ -25,6 +25,12 @@ I will also need to find a way to know which UUID is on screen. */
     .catch((err) => {
       console.log(err);
     })
+  }
+
+  componentDidMount() {
+    window.addEventListener('updateUuid', (event) => {
+      this.setState({uuid: event.detail})
+    }, false);
   }
 
   render() {
