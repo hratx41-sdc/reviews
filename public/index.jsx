@@ -10,14 +10,8 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      uuid: 12, //this will be a number based on the current UUID
+      uuid: 12, //talk to hunter about how this works
       reviews: [], //find a way to get currentUuid's reviews into state
-      oneStarTotal: 0, //this will be a number, but I might not need to put this into state each time
-      twoStarTotal: 0, //this will be a number, but I might not need to put this into state each time
-      threeStarTotal: 0, //this will be a number, but I might not need to put this into state each time
-      fourStarTotal: 0, //this will be a number, but I might not need to put this into state each time
-      fiveStarTotal: 0, //this will be a number, but I might not need to put this into state each time
-      averageRating: 0//this will be a number that determines how many stars show illuminated
     }
   }
 

@@ -7,12 +7,17 @@ import AverageStarRating from './AverageStarRating.jsx';
 const Reviews = (props) => {
   return (
     <>
-      <div className="container product-reviews">
+      <div>
         <h2 className="subheading" >REVIEWS</h2>
+        <div className="average-rating">
         <AverageStarRating reviewData={props.reviewData}/>
-        <br></br>
+        </div>
+        <div className="star-totals">
         <StarTotals reviewData={props.reviewData}/>
+        </div>
+        <div className="review-list" >
         <Review reviewData={props.reviewData}/>
+        </div>
       </div>
     </>
   );
