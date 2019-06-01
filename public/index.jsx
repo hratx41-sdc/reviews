@@ -42,5 +42,5 @@ I will also need to find a way to know which UUID is on screen. */
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('reviews'));
 
