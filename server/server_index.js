@@ -3,11 +3,13 @@ const app = express()
 const port = 3001
 const db = require('./db_index.js');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('dist'));
+app.use(cors());
 
 // the colon symbolizes that whatever's after it is a parameter
 app.get('/api/reviews/:uuid', (req, res) => {
