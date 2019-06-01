@@ -1,6 +1,8 @@
 /** INDIVIDUAL REVIEW **/
 body {
-  font-family: "Oswald", sans-serif
+  font-family: Oswald, sans-serif;
+  font-size: 12px;
+  font-style: normal;
 }
 
 .subheading {
@@ -11,6 +13,10 @@ body {
   display: inline-block;
   vertical-align: top;
   margin-left: 50px;
+}
+
+.review {
+  color: rgb(73, 72, 72);
 }
 
 .star-totals {
@@ -28,6 +34,7 @@ body {
 .date {
   float: right;
   margin-bottom: 30px;
+  color: rgb(73, 72, 72);
 }
 
 * {box-sizing: border-box;}

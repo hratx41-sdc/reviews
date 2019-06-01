@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      uuid: 12, //talk to hunter about how this works
+      uuid: 18, //talk to hunter about how this works
       reviews: [], //find a way to get currentUuid's reviews into state
     }
   }

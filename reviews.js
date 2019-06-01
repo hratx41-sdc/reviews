@@ -10,12 +10,11 @@ var randomElement = function(array){
   return array[randomIndex];
 };
 
-// random tweet generator
+// random review generator
 const opening = ['just', '', '', '', '', 'ask me how i', 'completely', 'nearly', 'productively', 'efficiently', 'last night i', 'the president', 'that wizard', 'a ninja', 'a seedy old man'];
 const verbs = ['downloaded', 'interfaced', 'deployed', 'developed', 'built', 'invented', 'experienced', 'navigated', 'aided', 'enjoyed', 'engineered', 'installed', 'debugged', 'delegated', 'automated', 'formulated', 'systematized', 'overhauled', 'computed'];
 const objects = ['my', 'your', 'the', 'a', 'my', 'an entire', 'this', 'that', 'the', 'the big', 'a new form of'];
 const nouns = ['cat', 'koolaid', 'system', 'city', 'worm', 'cloud', 'potato', 'money', 'way of life', 'belief system', 'security system', 'bad decision', 'future', 'life', 'pony', 'mind'];
-const tags = ['#techlife', '#burningman', '#sf', 'but only i know how', 'for real', '#sxsw', '#ballin', '#omg', '#yolo', '#magic', '', '', '', ''];
 const firstNames = ['Jane', 'Bob', 'Tim', 'Mike', 'Sarah', 'Maria', 'Gladys', 'Jerry', 'Terry', 'Jacob', 'Linden', 'David', 'Elane', 'Chris', 'John', 'Ashley', 'Dale', 'Hazel', 'Kate', 'Ken', 'Jim', 'Barbara', 'Beth', 'Liz', 'Eric', 'Jenny', 'Pam', 'Adam', 'Marcus', 'Kristin', 'Tiffany', 'Shayna', 'Nadia', 'Clayton', 'Alfred', 'Shannon', 'Michael', 'Shane', 'Hunter', 'Apollo', 'Justin', 'Angela', 'Gina', 'Wayne', 'Bruce', 'Eve', 'Eva', 'Tonya']
 const lastNames = ['Smith', 'Reynolds', 'Spence', 'Taylor', 'Kim', 'Lee', 'Sanchez', 'White', 'Brown', 'Jefferson', 'Arnold', 'Tyler', 'Washington', 'Pitt', 'Hill', 'Wright', 'Wayne', 'Kelly', 'Greene', 'Williams', 'Williamson', 'Fredman', 'Patel', 'Lliamson', 'Davidson', 'Stewart', 'Coachman', 'Caruso', 'Kinsey', 'Crolley', 'Osborn', 'Davella', 'Millburn', 'Nicodemus', 'Rogan', 'Ferriss', 'Paulson', 'Parish']
 const months = ['1', '2', '3', '4', '5'];
@@ -24,7 +23,7 @@ const days = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13
 
 
 const randomMessage = function(){
-  return [randomElement(opening), randomElement(verbs), randomElement(objects), randomElement(nouns), randomElement(tags)].join(' ');
+  return [randomElement(opening), randomElement(verbs), randomElement(objects), randomElement(nouns)].join(' ');
 };
 
 const randomName = function(){
