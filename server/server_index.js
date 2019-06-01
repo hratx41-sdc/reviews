@@ -13,7 +13,6 @@ app.use(cors());
 
 // the colon symbolizes that whatever's after it is a parameter
 app.get('/api/reviews/:uuid', (req, res) => {
-    console.log('here is the uuid we ask for in the get', req.params.uuid); 
     db.getReviewsByUuid(req.params.uuid, (err, data)=> {
       if(err) {
         console.log('There was an error running app.get', err)
