@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 // const dbpass = require('dbpass.js')
-mongoose.connect('mongodb+srv://spence:drowssap@fashova-reviews-ha8kw.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true});  // mongodb://localhost/fetcher
+mongoose.connect('http://mongodb+srv://spence:drowssap@fashova-reviews-ha8kw.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true});  // mongodb://localhost/fetcher
 const {dbObject} = require('../reviews');
 
 
