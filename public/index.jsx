@@ -33,6 +33,18 @@ I will also need to find a way to know which UUID is on screen. */
     }, false);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.uuid !== prevState.uuid) {
+      axios.get(`http://ec2-54-173-235-60.compute-1.amazonaws.com/api/reviews/${this.state.uuid}`)
+    .then((res) => {
+      this.setState({reviews: res.data[0].reviews})
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    }
+  }
+
   render() {
     return (
       <>
