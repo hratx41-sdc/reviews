@@ -1,2 +1,4 @@
 node_modules
 dbpass.js
+server/fake.json
+.DS_Store

@@ -18,8 +18,9 @@ class App extends React.Component {
 /* This lifecycle method should make a get request to the databse to gather data for the current UUID.
 I will also need to find a way to know which UUID is on screen. */
   componentWillMount() {
-    axios.get(`http://ec2-54-173-235-60.compute-1.amazonaws.com/api/reviews/${this.state.uuid}`)
+    axios.get(`/api/reviews/${this.state.uuid}`)
     .then((res) => {
+      console.log(res.data);
       this.setState({reviews: res.data[0].reviews})
     })
     .catch((err) => {
@@ -29,14 +30,15 @@ I will also need to find a way to know which UUID is on screen. */
 
   componentDidMount() {
     window.addEventListener('updateUuid', (event) => {
-      this.setState({uuid: event.detail})
+      this.setState({uuid: event.detail});
     }, false);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.uuid !== prevState.uuid) {
-      axios.get(`http://ec2-54-173-235-60.compute-1.amazonaws.com/api/reviews/${this.state.uuid}`)
+      axios.get(`/api/reviews/${this.state.uuid}`)
     .then((res) => {
+      console.log(res.data)
       this.setState({reviews: res.data[0].reviews})
     })
     .catch((err) => {
