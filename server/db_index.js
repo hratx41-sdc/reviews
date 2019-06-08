@@ -1,11 +1,12 @@
 
 const mongoose = require('mongoose');
+require('locus');
 
 mongoose.Promise = global.Promise;
 // const dbpass = require('dbpass.js')
-mongoose.connect('mongodb+srv://spence:drowssap@fashova-reviews-ha8kw.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true }); // mongodb://localhost/fetcher
+// mongoose.connect('mongodb+srv://spence:drowssap@fashova-reviews-ha8kw.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true }); // mongodb://localhost/fetcher
 // const { dbObject } = require('../reviews');
-
+mongoose.connect('mongodb://localhost/fake', { useNewUrlParser: true });
 // establish database connection
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -13,18 +14,34 @@ db.once('open', () => {
   console.log('we are connected to Mongo database!');
 });
 
+const { Schema } = mongoose;
 // the main object
-const reviewsSchema = mongoose.Schema({
-  UUID: Number,
-  reviews: [{
-    customerName: String,
-    starRating: Number,
-    date: String,
-    reviewTitle: String,
-    review: String,
-    helpful: { yes: Number, no: Number },
-  }],
-});
+const reviewsSchema = new Schema({
+  uuid: Number,
+  customerName: String,
+  starRating: Number,
+  date: String,
+  reviewTitle: String,
+  review: String,
+  helpfulYes: Number,
+  helpfulNo: Number,
+}, { versionKey: false });
+
+// let repoSchema = new Schema({
+//   // TODO: your schema here!
+//   id: {
+//     type: Number,
+//     unique: true
+//   },
+//   full_name: String,
+//   owner: {
+//     login: String
+//   },
+//   html_url: String,
+//   forks: Number
+// }, { versionKey: false)};
+
+// let Repo = mongoose.model('Repo', repoSchema);
 
 // a constructor that creates objects that go into the main object
 
@@ -35,7 +52,7 @@ const Review = mongoose.model('Review', reviewsSchema);
 
 // THIS IS NOT A WORKING FUNCTION!!!!
 const getReviewsByUuid = (uuid, callback) => {
-  Review.find({ UUID: uuid }, (err, result) => {
+  Review.find({ uuid: uuid }, (err, result) => {
     if (err) {
       console.log(err);
       throw err;
@@ -60,7 +77,5 @@ const getReviewsByUuid = (uuid, callback) => {
 //     }
 // });
 
-
-console.log(Review);
 
 module.exports = { db, getReviewsByUuid };
