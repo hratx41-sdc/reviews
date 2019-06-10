@@ -6,7 +6,7 @@ mongoose.Promise = global.Promise;
 // const dbpass = require('dbpass.js')
 // mongoose.connect('mongodb+srv://spence:drowssap@fashova-reviews-ha8kw.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true }); // mongodb://localhost/fetcher
 // const { dbObject } = require('../reviews');
-mongoose.connect('mongodb://localhost/fake', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/sdc', { useNewUrlParser: true });
 // establish database connection
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -18,6 +18,7 @@ const { Schema } = mongoose;
 // the main object
 const reviewsSchema = new Schema({
   uuid: Number,
+  rid: Number,
   customerName: String,
   starRating: Number,
   date: String,
@@ -63,7 +64,60 @@ const getReviewsByUuid = (uuid, callback) => {
   });
 };
 
+const insertReview = (revw, callback) => {
+  Review.findOne().sort('-rid').exec((err, doc) => {
+    if (err) {
+      console.log(err);
+    } else {
+      let newRid = doc.rid;
+      newRid++;
+      const newRev = {
+        uuid: revw.uuid,
+        rid: newRid,
+        customerName: revw.customerName,
+        starRating: revw.starRating,
+        date: new Date().toISOString(),
+        reviewTitle: revw.reviewTitle,
+        review: revw.review,
+        helpfulYes: 0,
+        helpfulNo: 0,
+      };
+      Review.create(newRev, (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      });
+    }
+  });
+};
 
+const updateReview = (update, callback) => {
+  Review.updateOne({ rid: parseInt(update.rid) },
+    {
+      starRating: parseInt(update.starRating),
+      reviewTitle: update.reviewTitle,
+      review: update.review,
+      date: new Date().toISOString(),
+    }, (err) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null);
+      }
+    });
+};
+
+const deleteReview = (del, callback) => {
+  Review.deleteOne({ rid: del }, (err) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null);
+    }
+  });
+};
 // THESE ARE FOR DE-SEEDING AND RE-SEEDING DB AS NEEDED DO NOT DELETE
 
 // Review.deleteMany({}, (err) => console.log);
@@ -78,4 +132,4 @@ const getReviewsByUuid = (uuid, callback) => {
 // });
 
 
-module.exports = { db, getReviewsByUuid };
+module.exports = { getReviewsByUuid, insertReview, updateReview, deleteReview };

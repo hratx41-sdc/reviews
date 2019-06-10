@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      uuid: 59, //talk to hunter about how this works
+      uuid: 10, //talk to hunter about how this works
       reviews: [], //find a way to get currentUuid's reviews into state
     }
   }
@@ -21,7 +21,7 @@ I will also need to find a way to know which UUID is on screen. */
     axios.get(`/api/reviews/${this.state.uuid}`)
     .then((res) => {
       console.log(res.data);
-      this.setState({reviews: res.data[0].reviews})
+      this.setState({reviews: res.data});
     })
     .catch((err) => {
       console.log(err);
@@ -39,7 +39,7 @@ I will also need to find a way to know which UUID is on screen. */
       axios.get(`/api/reviews/${this.state.uuid}`)
     .then((res) => {
       console.log(res.data)
-      this.setState({reviews: res.data[0].reviews})
+      this.setState({reviews: res.data})
     })
     .catch((err) => {
       console.log(err);

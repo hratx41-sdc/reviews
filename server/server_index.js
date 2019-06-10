@@ -4,8 +4,7 @@ const app = express();
 const port = 3001;
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const faker = require('faker');
-const db = require('./db_index.js');
+const db = require('./mongodb.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,14 +25,40 @@ app.get('/api/reviews/:uuid', (req, res) => {
   });
 });
 
-app.post('/api/reviews/insert', (req, res) => {
-  let data = req.body;
-  res.status(200).send('insert success');
+app.post('/api/reviews/', (req, res) => {
+  const review = req.body;
+  db.insertReview(review, (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).end();
+    } else {
+      res.status(200).send('success');
+    }
+  });
 });
 
-app.put('/api/reviews/insert:uuid', (req, res) => {
-  let data = req.body;
-  res.status(200).send('insert success');
+app.put('/api/reviews/', (req, res) => {
+  const review = req.body;
+  db.updateReview(review, (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).end();
+    } else {
+      res.status(200).send('success');
+    }
+  });
+});
+
+app.delete('/api/reviews/', (req, res) => {
+  const review = parseInt(req.body.rid);
+  db.deleteReview(review, (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).end();
+    } else {
+      res.status(200).send('success');
+    }
+  });
 });
 
 // app.post((req, res) => res.sent('app.post posted to the database'))
