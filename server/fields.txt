@@ -1,5 +1,4 @@
 uuid
-rid
 customerName
 starRating
 date

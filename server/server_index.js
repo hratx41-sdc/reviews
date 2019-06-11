@@ -1,10 +1,12 @@
+require('newrelic');
 const express = require('express');
 
 const app = express();
 const port = 3001;
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const db = require('./mongodb.js');
+// const db = require('./mongodb.js'); //mongoDB
+const db = require('./psql.js'); //PostgresSQL
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,7 +21,6 @@ app.get('/api/reviews/:uuid', (req, res) => {
       console.log('There was an error running app.get', err);
       res.status(400).end();
     } else {
-      console.log(data);
       res.status(200).send(data);
     }
   });
@@ -60,7 +61,5 @@ app.delete('/api/reviews/', (req, res) => {
     }
   });
 });
-
-// app.post((req, res) => res.sent('app.post posted to the database'))
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
