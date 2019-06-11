@@ -15,7 +15,7 @@ const AverageStarRating = (props) => {
     //if the average rating is 1
     if(average > 1 && average < 2) {
       return (
-        <>
+        <React.Fragment>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star"></span>
           <span class="fa fa-star"></span>
@@ -23,14 +23,14 @@ const AverageStarRating = (props) => {
           <span class="fa fa-star"></span>
 
           <span> {numberOfReviews} Reviews</span>
-        </>
+        </React.Fragment>
       );
     }
 
     //if the average rating is 2
     if(average > 2 && average < 3) {
       return (
-        <>
+        <React.Fragment>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star"></span>
@@ -38,14 +38,14 @@ const AverageStarRating = (props) => {
           <span class="fa fa-star"></span>
 
           <span> {numberOfReviews} Reviews</span>
-        </>
+        </React.Fragment>
       );
     }
 
     //if the average rating is 3
     if(average > 3 && average < 4) {
       return (
-        <>
+        <React.Fragment>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
@@ -53,14 +53,14 @@ const AverageStarRating = (props) => {
           <span class="fa fa-star"></span>
 
           <span> {numberOfReviews} Reviews</span>
-        </>
+        </React.Fragment>
       );
     }
 
     //if the average rating is 4
     if(average > 4 && average < 5) {
       return (
-        <>
+        <React.Fragment>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
@@ -68,14 +68,14 @@ const AverageStarRating = (props) => {
           <span class="fa fa-star"></span>
 
           <span> {numberOfReviews} Reviews</span>
-        </>
+        </React.Fragment>
       );
     }
 
     //if the average rating is 5
     if(average === 5) {
       return (
-        <>
+        <React.Fragment>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
@@ -83,7 +83,7 @@ const AverageStarRating = (props) => {
           <span class="fa fa-star checked"></span>
 
           <span> {numberOfReviews} Reviews</span>
-        </>
+        </React.Fragment>
       );
     }
   };
@@ -93,9 +93,9 @@ const AverageStarRating = (props) => {
 
 
   return (
-    <>
+    <React.Fragment>
       {averageRating}
-    </>
+    </React.Fragment>
   );
 }
 

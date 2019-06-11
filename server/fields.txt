@@ -1,0 +1,8 @@
+uuid
+customerName
+starRating
+date
+reviewTitle
+review
+helpfulYes
+helpfulNo
