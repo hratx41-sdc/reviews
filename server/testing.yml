@@ -2,12 +2,30 @@ config:
   target: "http://127.0.0.1:3001"
   phases:
     - duration: 60
-      arrivalRate: 10
+      arrivalRate: 100
   payload:
     path: "testrecords.csv"
     fields:
       - "uuid"
 scenarios:
   - flow:
+    - get:
+        url: "/api/reviews/{{uuid}}"
+    - get:
+        url: "/api/reviews/{{uuid}}"
+    - get:
+        url: "/api/reviews/{{uuid}}"
+    - get:
+        url: "/api/reviews/{{uuid}}"
+    - get:
+        url: "/api/reviews/{{uuid}}"
+    - get:
+        url: "/api/reviews/{{uuid}}"
+    - get:
+        url: "/api/reviews/{{uuid}}"
+    - get:
+        url: "/api/reviews/{{uuid}}"
+    - get:
+        url: "/api/reviews/{{uuid}}"
     - get:
         url: "/api/reviews/{{uuid}}"
