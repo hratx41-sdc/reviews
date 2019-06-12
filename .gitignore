@@ -3,3 +3,4 @@ server/fake.json
 .DS_Store
 newrelic.js
 *.csv
+psql-sdc-ec2.pem
