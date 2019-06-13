@@ -1,6 +1,6 @@
 node_modules
 server/fake.json
 .DS_Store
-server/fake.csv
-server/faketest.csv
 newrelic.js
+*.csv
+psql-sdc-ec2.pem
