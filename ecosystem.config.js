@@ -7,7 +7,7 @@ module.exports = {
     production: {
       user: 'ubuntu',
       host: 'ec2-54-175-179-239.compute-1.amazonaws.com',
-      key: '~./psql-sdc-ec2.pem',
+      key: '~./Documents/GitHub/sf-fashova-reviews/psql-sdc-ec2.pem',
       ref: 'origin/master',
       repo: 'https://github.com/hratx41-sdc/sf-fashova-reviews',
       path: '/home/ubuntu/sf-fashova-reviews',
