@@ -69,7 +69,9 @@ if (cluster.isMaster) {
       }
     });
   });
-  
+  app.get('/loaderio-2ebf74fb664310f10b153ee0ac6816ee/', (req, res) => {
+    res.status(200).send('loaderio-2ebf74fb664310f10b153ee0ac6816ee');
+  });
   app.listen(port, () => console.log(`Listening on port ${port}!`));
 
 }
