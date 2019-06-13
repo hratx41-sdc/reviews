@@ -4,3 +4,5 @@ server/fake.json
 newrelic.js
 *.csv
 psql-sdc-ec2.pem
+.env
+newrelic_agent.log
