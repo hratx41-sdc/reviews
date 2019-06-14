@@ -12,7 +12,7 @@ const client = new Client({
 client.connect();
 
 const getReviewsByUuid = (uuid, cb) => {
-  client.query(`SELECT * FROM reviews WHERE uuid = ${uuid};`, (err, results) => {
+  client.query('SELECT * FROM reviews WHERE uuid = $1;', [uuid], (err, results) => {
     if (err) {
       console.log(err);
       cb(err, null);

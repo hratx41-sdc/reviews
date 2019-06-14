@@ -24,10 +24,14 @@ if (cluster.isMaster) {
   
   // the colon symbolizes that whatever's after it is a parameter
   app.get('/api/reviews/:uuid', (req, res) => {
-    db.getReviewsByUuid(parseInt(req.params.uuid), (err, data) => {
+    const uuid = req.params.uuid
+    if (!uuid) {
+      res.status(404).end();
+    }
+    db.getReviewsByUuid(parseInt(uuid), (err, data) => {
       if (err) {
         console.log('There was an error running app.get', err);
-        res.status(400).end();
+        res.status(500).end();
       } else {
         res.status(200).send(data);
       }
@@ -36,6 +40,9 @@ if (cluster.isMaster) {
   
   app.post('/api/reviews/', (req, res) => {
     const review = req.body;
+    if (!review) {
+      res.status(404).end();
+    }
     db.insertReview(review, (err) => {
       if (err) {
         console.log(err);
@@ -48,6 +55,9 @@ if (cluster.isMaster) {
   
   app.put('/api/reviews/', (req, res) => {
     const review = req.body;
+    if (!review) {
+      res.status(404).end();
+    }
     db.updateReview(review, (err) => {
       if (err) {
         console.log(err);
@@ -60,6 +70,9 @@ if (cluster.isMaster) {
   
   app.delete('/api/reviews/', (req, res) => {
     const review = parseInt(req.body.rid);
+    if (!review) {
+      res.status(404).end();
+    }
     db.deleteReview(review, (err) => {
       if (err) {
         console.log(err);
